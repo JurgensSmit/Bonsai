@@ -51,6 +51,7 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+    redirect_to root_path
   end
 
   # PUT /posts/1
