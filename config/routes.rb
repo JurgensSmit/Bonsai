@@ -6,6 +6,9 @@ Bonsai::Application.routes.draw do
    resources :comments
 end
 
+resources :posts do
+    resources :users
+end
 
   authenticated :user do
     root :to => 'posts#index'
