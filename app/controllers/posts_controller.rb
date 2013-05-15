@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = @user.posts
+
+    @posts = Post.paginate(:page => params[:page], :per_page => 1)
+
+    #BEFORE MY MERGE
+    #@posts = @user.posts
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
