@@ -2,7 +2,7 @@
 
 <%= @post.content %>
 
-
+<%= image_tag(@post.image, :class => :thumb) if @post.image? %>
 
 <h2> Comments </h2>
 
