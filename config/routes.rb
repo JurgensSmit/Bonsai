@@ -1,19 +1,18 @@
 Bonsai::Application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 
 
-  resources :posts do 
-   resources :comments
-end
 
-resources :posts do
-    resources :users
-end
 
   authenticated :user do
-    root :to => 'posts#index'
+    root :to => 'home#index'
   end
-  root :to => "posts#index"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  resources :users
+  root :to => "home#index"
+
+    resources :users do
+        resources :posts do
+            resources :comments
+            end
+            end
 end
