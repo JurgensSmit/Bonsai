@@ -42,17 +42,8 @@ class User < ActiveRecord::Base
       end
     end
   end
-<<<<<<< HEAD
 
 has_many :posts
 
 
-
-
-
-
 end
-=======
-end
-
->>>>>>> origin/master

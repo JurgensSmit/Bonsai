@@ -7,7 +7,7 @@
     <%= f.input :email, :required => true %>
     <label class="control-label" for="user_picture">Profile Picture</label>
     <%= image_tag(@user.avatar, :class => 'img-rounded avatar') if @user.avatar? %>
-    <%= f.file_field :picture %>
+    <%= f.file_field :avatar %>
     <br><br>
     <%= f.input :location %>
     <%= f.input :about, :input_html => { :class => 'fit-width', :rows => '8' } %>
