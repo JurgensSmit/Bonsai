@@ -1,14 +1,24 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :name, :autofocus => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false %>
-  <%= f.input :password_confirmation, :required => false %>
-  <%= f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true %>
-  <%= f.button :submit, 'Update', :class => 'btn-primary' %>
-<% end %>
-<h3>Cancel my account</h3>
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-<%= link_to "Back", :back %>
+<div class="container-narrow">
+    <h2><i class="icon-cog"></i> Profile &amp; Account</h2>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+    <%= f.error_notification %>
+    <%= display_base_errors resource %>
+    <%= f.input :name, :autofocus => true %>
+    <%= f.input :email, :required => true %>
+    <label class="control-label" for="user_picture">Profile Picture</label>
+    <%= image_tag(@user.avatar, :class => 'img-rounded avatar') if @user.avatar? %>
+    <%= f.file_field :avatar %>
+    <br><br>
+    <%= f.input :location %>
+    <%= f.input :about, :input_html => { :class => 'fit-width', :rows => '8' } %>
+    <%= f.input :facebook, :input_html => { :class => 'fit-width' } %>
+    <%= f.input :twitter, :input_html => { :class => 'fit-width' } %>
+    <%= f.input :website, :input_html => { :class => 'fit-width' } %>
+    <%= f.input :current_password, :hint => "We need your current password to make any password changes.", :required => true %>
+    <%= f.input :password, :autocomplete => "off", :label => "New password", :required => false %>
+    <%= f.input :password_confirmation, :label => "New password confirmation", :required => false %>
+    <%= f.button :submit, 'Update', :class => 'btn-primary' %>
+  <% end %>
+  <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+  <%= link_to "Back", :back %>
+</div>

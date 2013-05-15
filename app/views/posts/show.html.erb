@@ -2,7 +2,7 @@
 
 <%= @post.content %>
 
-
+<%= image_tag(@post.image, :class => :thumb) if @post.image? %>
 
 <h2> Comments </h2>
 
@@ -18,7 +18,7 @@
 <% end %>
 
 <p>
-<%= link_to "Back", posts_path %>
+<%= link_to "Back", user_posts_path %>
 
 <%= link_to "Edit", edit_post_path(@post) %>
 

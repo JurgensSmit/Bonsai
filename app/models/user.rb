@@ -6,11 +6,17 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
+  #Carrierwave
+   mount_uploader :avatar, AvatarUploader
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  attr_accessible :link, :image, :first_name, :last_name
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, 
+  :link, :image, :first_name, :last_name, :avatar, :location, :about, :website, :twitter, :facebook
+  
+  def valid_password?(password)  
+  !provider.nil? || super(password)  
+  end
+
   devise :omniauthable, :omniauth_providers => [:facebook]
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
   user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -36,4 +42,8 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+has_many :posts
+
+
 end
