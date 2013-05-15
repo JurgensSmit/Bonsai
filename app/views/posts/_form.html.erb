@@ -5,8 +5,12 @@
     <%= f.input :title %>
     <%= f.input :tag %>
     <%= f.input :content %>
-    <%= f.input :image %>
-  </div>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.label :remote_image_url, "or image URL" %><br />
+    <%= f.text_field :remote_image_url %>
+  </p>
 
   <div class="form-actions">
     <%= f.button :submit %>
