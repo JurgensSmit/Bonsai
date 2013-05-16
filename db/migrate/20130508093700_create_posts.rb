@@ -6,7 +6,14 @@ class CreatePosts < ActiveRecord::Migration
       t.text :content
       t.string :image
 
+     t.references :user
+
+      t.timestamps
+    end
+
+    add_index :posts, :user_id
+
+
       t.timestamps
     end
   end
-end

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -16,7 +17,6 @@ gem 'pg'
 end
 
 group :test do
-gem 'pg'
 gem "email_spec", ">= 1.4.0"
 gem "database_cleaner", ">= 1.0.0.RC1"
 gem "capybara", ">= 2.0.3"
@@ -40,5 +40,7 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'carrierwave'
+gem 'acts_as_votable', '~> 0.5.0'
 gem 'will_paginate', '~> 3.0'
 gem 'carrierwave'
