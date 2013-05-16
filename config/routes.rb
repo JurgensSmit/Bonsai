@@ -6,8 +6,8 @@ Bonsai::Application.routes.draw do
   end
   root :to => "home#index"
 
-    get "contact/index", :id => "contact"
-  match "contact" => "contact#index"
+  match 'contact' => 'contact#new', :as => 'contact', :via => :get
+  match 'contact' => 'contact#create', :as => 'contact', :via => :post
 
 
     resources :users do
