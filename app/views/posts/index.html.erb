@@ -1,32 +1,20 @@
 <h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Tag</th>
-    <th>Content</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-
+<br>
 <% @posts.each do |post| %>
-  <tr>
 
-    <td><%= post.title %></td>
-    <td><%= post.tag %></td>
-    <td><%= post.content %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<h4> Post Title:</h4><%= post.title %><br>
+<h4> Post Tags:</h4><%= post.tag %><br>
+<h4> Post Content:</h4><%= post.content %><br>
+<h4> Post Author:</h4><%= post.user.name %><br><br>
+
+<%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-warning'%>
+<%= link_to "Back", user_posts_path(post.user) ,:class => 'btn btn-info'%>
+        <%= link_to 'Like', like_post_path(post), :method => :post, :class => 'btn' %>
+Likes: <%= post.likes.size %>
 <% end %>
-</table>
 
+<br><br>
+<%= link_to 'New Post', new_user_post_path(@user) , :class=>'btn btn-success'%>
 
-
-<%= link_to 'New Post', new_post_path %>
 <%= will_paginate @posts %>
 

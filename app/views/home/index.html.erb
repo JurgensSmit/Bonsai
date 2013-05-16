@@ -6,10 +6,16 @@
   <p> <%= user.first_name %> </p>
   <p><%= user.last_name %> </p>
   <p> <%= user.link %> <p>
-
+<% @users.each do |user| %>
+<% user.posts.each do |post| %>
+<%= post.title %>
+<% end %>
+<%end %>
 
 <% end %>
-    <%= link_to "New Post", new_user_post_path(current_user) %>
 
-<% end %>
+
+<%= link_to "New Post", new_user_post_path(current_user) %>
+
+
 
