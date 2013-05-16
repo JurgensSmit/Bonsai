@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = @user.posts
-    @posts = Post.paginate(:page => params[:page], :per_page => 1)
+    @posts = Post.paginate(:page => params[:page], :per_page => 3)
     #BEFORE MY MERGE
     #@posts = @user.posts
     respond_to do |format|
@@ -17,7 +17,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = @user.posts.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
@@ -27,11 +26,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = @user.post.build
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
+    @post = @user.posts.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -40,17 +35,17 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = @user.post.build(params[:post])
+    @post = @user.posts.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = @user.post.build(params[:post])
+    @post = @user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
-      format.html { redirect_to user_post_path[@user, @post], notice: 'Post was successfully created.' }
+      format.html { redirect_to user_posts_path(@user), notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -62,7 +57,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    @post = @user.post.find(params[:id])
+    @post = @user.posts.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to user_posts_url(@user), notice: 'Post was successfully updated.' }
@@ -79,15 +74,18 @@ class PostsController < ApplicationController
   def destroy
     @post = @user.posts.find(params[:id])
     @post.destroy
-<<<<<<< HEAD
      respond_to do |format|
-=======
 
-    respond_to do |format|
->>>>>>> origin/master
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+ def like
+    @post= Post.find(params[:id])
+    @post.liked_by current_user
+    redirect_to :back
+    flash[:notice]="Liked!" 
   end
 
   private
