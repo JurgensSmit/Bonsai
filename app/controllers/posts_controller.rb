@@ -84,7 +84,7 @@ class PostsController < ApplicationController
 
  def upvote
     @post= @user.post.find(params[:id])
-     if !current_user.likes @post
+     if !(current_user.likes @post)
     @post.liked_by current_user
   end
     redirect_to :back
