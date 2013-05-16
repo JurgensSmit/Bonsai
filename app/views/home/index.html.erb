@@ -57,3 +57,83 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
+=======
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="large-4 columns">
+      <div class="panel">
+        <p>
+          <img src="http://placehold.it/400x300" />
+        </p>
+      </div>
+    </div>
+    <div class="large-4 columns">
+      <div class="panel">
+        <p>
+          <img src="http://placehold.it/400x300" />
+        </p>
+      </div>
+    </div>
+    <div class="large-4 columns">
+      <div class="panel">
+        <p>
+          <img src="http://placehold.it/400x300" />
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row">
+
+    <div class="large-6 columns">
+      <div class="panel">
+        <h5>Panel Title</h5>
+        <p>This is a six columns grid panel with an arbitrary height. Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin.</p>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="panel">
+        <h5>Panel Title</h5>
+        <p>This is a three columns grid panel with an arbitrary height.</p>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <div class="panel">
+        <h5>Panel Title</h5>
+        <p>This is a three columns grid panel with an arbitrary height.</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- End Grid Section -->
+
+<h1>Listing posts</h1>
+<br>
+<% @posts.each do |post| %>
+
+<h4> Post Title:</h4><%= post.title %><br>
+<h4> Post Tags:</h4><%= post.tag %><br>
+<h4> Post Content:</h4><%= post.content %><br>
+<h4> Post Author:</h4><%= post.user.name %><br><br>
+
+<%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-warning'%>
+<%= link_to "Back", user_posts_path(post.user) ,:class => 'btn btn-info'%>
+        <%= link_to 'Like', like_user_post_path(post.user,post), :method => :post, :class => 'btn' %>
+Likes: <%= post.likes.size %>
+<% end %>
+
+<br><br>
+<%= link_to 'New Post', new_user_post_path(current_user) , :class=>'btn btn-success'%>
+
+<%= will_paginate @posts %>
+
+>>>>>>> origin/master
