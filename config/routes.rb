@@ -1,24 +1,21 @@
 Bonsai::Application.routes.draw do
+  get "privacy_policy/index"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  authenticated :user do
+    authenticated :user do
     root :to => 'home#index'
-  end
-  root :to => "home#index"
-
-  match 'contact' => 'contact#new', :as => 'contact', :via => :get
-  match 'contact' => 'contact#create', :as => 'contact', :via => :post
-
-
-    resources :users do
-        resources :posts do
-            member do
-            post :like
-            end
-              resources :comments
-              end
-          
     end
-
-
+        get "privacy_policy/index", :id => "privacy_policy"
+        match "privacy_policy" => "privacy_policy#index"
+      root :to => "home#index"
+      match 'contact' => 'contact#new', :as => 'contact', :via => :get
+      match 'contact' => 'contact#create', :as => 'contact', :via => :post
+      resources :users do
+      resources :posts do
+      member do
+      post :like
+      end
+    resources :comments
+    end
+  end
 end
