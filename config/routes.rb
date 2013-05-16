@@ -8,17 +8,16 @@ Bonsai::Application.routes.draw do
 
     get "contact/index", :id => "contact"
   match "contact" => "contact#index"
-resources :posts do
-     member do
-            post :like
-            end
-            end
+
 
     resources :users do
         resources :posts do
+            member do
+            post :like
+            end
               resources :comments
               end
-
+          
     end
 
 

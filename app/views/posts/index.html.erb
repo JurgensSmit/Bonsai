@@ -9,7 +9,7 @@
 
 <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-warning'%>
 <%= link_to "Back", user_posts_path(post.user) ,:class => 'btn btn-info'%>
-        <%= link_to 'Like', like_post_path(post), :method => :post, :class => 'btn' %>
+        <%= link_to 'Like', like_user_post_path(post.user,post), :method => :post, :class => 'btn' %>
 Likes: <%= post.likes.size %>
 <% end %>
 

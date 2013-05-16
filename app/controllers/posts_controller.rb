@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-
+  before_filter :get_user
   # GET /posts
   # GET /posts.json
   def index
-    @user = User.find(params[:user_id])
     @posts = @user.posts
     @posts = Post.paginate(:page => params[:page], :per_page => 3)
     #BEFORE MY MERGE
@@ -17,7 +16,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +26,6 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @user = User.find(params[:user_id])
     @post = @user.posts.build
     respond_to do |format|
       format.html # new.html.erb
@@ -38,14 +35,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @user = User.find(params[:user_id])
     @post = @user.posts.build(params[:post])
 
     respond_to do |format|
@@ -62,7 +57,6 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -78,7 +72,6 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @user = User.find(params[:user_id])
     @post = @user.posts.find(params[:id])
     @post.destroy
      respond_to do |format|
@@ -95,6 +88,9 @@ class PostsController < ApplicationController
     flash[:notice]="Liked!" 
   end
 
-
+  private
+    def get_user
+      @user = User.find(params[:user_id])
+    end
 
 end
