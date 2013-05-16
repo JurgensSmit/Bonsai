@@ -4,6 +4,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = @user.posts
+    @posts = Post.paginate(:page => params[:page], :per_page => 1)
+    #BEFORE MY MERGE
+    #@posts = @user.posts
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -25,6 +28,10 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = @user.post.build
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -72,7 +79,12 @@ class PostsController < ApplicationController
   def destroy
     @post = @user.posts.find(params[:id])
     @post.destroy
+<<<<<<< HEAD
      respond_to do |format|
+=======
+
+    respond_to do |format|
+>>>>>>> origin/master
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
