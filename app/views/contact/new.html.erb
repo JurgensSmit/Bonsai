@@ -1,0 +1,32 @@
+<div class="row">
+      <div class="large-12 columns">
+      	    <h2><i class="icon-envelope-alt"></i> Contact us</h2>
+        <%= form_for @message, :url => contact_path do |form| %>
+            <fieldset class="fields">
+            <div class="field">
+                <%= form.label :name %>
+                <%= form.text_field :name, :placeholder => "Enter your name...", :autofocus => true %>
+            </div>
+
+            <div class="field">
+                <%= form.label :email%>
+                <%= form.text_field :email, :placeholder => "Enter your email..." %>
+            </div>
+            <div class="field">
+                <%= form.label :subject %>
+                <%= form.text_field :subject, :placeholder => "Your subject..." %>
+            </div>
+
+            <div class="field">
+                <%= form.label :Message %>
+                <%= form.text_area :body, :placeholder => "Your message..." %>
+            </div>
+            </fieldset>
+
+            <fieldset class="button prefix">
+            <%= form.submit "Send" %>
+            </fieldset>
+        <% end %>
+
+      </div>
+    </div>
