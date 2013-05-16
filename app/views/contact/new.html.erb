@@ -1,7 +1,4 @@
-<% content_for :title, "Contact Bonsai" %>
 
-<div class="row">
-    <div class="large-12 columns">
         <h2><i class="icon-envelope-alt"></i> Contact us</h2>
             <%= form_for @message, :url => contact_path do |form| %>
             <fieldset class="fields">
@@ -26,5 +23,3 @@
         <%= form.submit "Send" %>
         </fieldset>
         <% end %>
-    </div>
-</div>
