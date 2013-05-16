@@ -28,10 +28,6 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = @user.post.build
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -79,15 +75,20 @@ class PostsController < ApplicationController
   def destroy
     @post = @user.posts.find(params[:id])
     @post.destroy
-<<<<<<< HEAD
      respond_to do |format|
-=======
 
-    respond_to do |format|
->>>>>>> origin/master
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+ def upvote
+    @post= @user.post.find(params[:id])
+     if !@post.liked_by current_user
+    @post.liked_by current_user
+  end
+    redirect_to :back
+    flash[:notice]="Liked!" 
   end
 
   private
