@@ -1,4 +1,3 @@
-
 <div id="homepage">
   <div class="container">
 
@@ -14,7 +13,7 @@
       <div class="list-kitchen" style="margin:0 auto !important;">
         <h3>Open your kitchen for reservations and
           meet foodies in your area. Experience truly authentic, local cuisine
-          and a whole new way of eating out.</h3>
+          and a whole new way of eating out.
           <br />
           <form accept-charset="UTF-8" action="/users/sign_up" class="form-inline" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
           <input id="email" name="email" placeholder="Email address" type="text" value="" />
@@ -22,118 +21,26 @@
 </form>      </div>
       
     </div>
-    <div class="row">
-      <div class="span12">
-        <div class="home-who-can">
+    
+      
+        <div class="home-who-can" style="background-image:url('black40.png')">
+
           <% @posts.each do |post| %>
+          <div class="row-fluid">
+          <div class="span4">
           <h2><%= post.title %></h2>
-          <ul>
-            <li>
-              <h4><%= post.tag %></h4>
+        
+            
+              <p><%= post.tag %><p>
               <p><%= post.content %></p>
-          </li>
-          <%end%>
-            <li>
-              <h4>Foodies</h4>
-              <p>For foodies that love to cook and want to share their favorite recipes with the world</p>
-            </li>
-            <li>
-              <h4>Private Chefs</h4>
-              <p>For private chefs that want to ply their trade, get feedback, and make some money doing it</p>
-          </li>
-            <li>
-              <h4>Restaurants</h4>
-              <p>For restaurants that want to fill in empty reservations, or promote a specialty dish</p>
-          </li>
-            <li>
-              <h4>Friends</h4>
-              <p>For friends that want to get together at their own private dinner parties</p>
-          </li>
-            <li>
-              <h4>Fundraisers</h4>
-              <p>For fundraisers looking to raise awareness and cash through an easy-to-use platform</p>
-          </li>
-          </ul>
+        
         </div>
-      </div>
-    </div>
-<<<<<<< HEAD
-=======
 
-  </div>
-
-
-  <div class="row">
-
-    <div class="large-4 columns">
-      <div class="panel">
-        <p>
-          <img src="http://placehold.it/400x300" />
-        </p>
-      </div>
-    </div>
-    <div class="large-4 columns">
-      <div class="panel">
-        <p>
-          <img src="http://placehold.it/400x300" />
-        </p>
-      </div>
-    </div>
-    <div class="large-4 columns">
-      <div class="panel">
-        <p>
-          <img src="http://placehold.it/400x300" />
-        </p>
-      </div>
+          <%end%>
+   </div>
+          
+         
+      
     </div>
 
   </div>
-
-
-  <div class="row">
-
-    <div class="large-6 columns">
-      <div class="panel">
-        <h5>Panel Title</h5>
-        <p>This is a six columns grid panel with an arbitrary height. Bacon ipsum dolor sit amet salami ham hock biltong ball tip drumstick sirloin pancetta meatball short loin.</p>
-      </div>
-    </div>
-    <div class="large-3 columns">
-      <div class="panel">
-        <h5>Panel Title</h5>
-        <p>This is a three columns grid panel with an arbitrary height.</p>
-      </div>
-    </div>
-    <div class="large-3 columns">
-      <div class="panel">
-        <h5>Panel Title</h5>
-        <p>This is a three columns grid panel with an arbitrary height.</p>
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- End Grid Section -->
-
-<h1>Listing posts</h1>
-<br>
-<% @posts.each do |post| %>
-
-<h4> Post Title:</h4><%= post.title %><br>
-<h4> Post Tags:</h4><%= post.tag %><br>
-<h4> Post Content:</h4><%= post.content %><br>
-<h4> Post Author:</h4><%= post.user.name %><br><br>
-
-<%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-warning'%>
-<%= link_to "Back", user_posts_path(post.user) ,:class => 'btn btn-info'%>
-        <%= link_to 'Like', like_user_post_path(post.user,post), :method => :post, :class => 'btn' %>
-Likes: <%= post.likes.size %>
-<% end %>
-
-<br><br>
-<%= link_to 'New Post', new_user_post_path(current_user) , :class=>'btn btn-success'%>
-
-<%= will_paginate @posts %>
-
->>>>>>> origin/master
