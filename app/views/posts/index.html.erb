@@ -1,12 +1,15 @@
 
 <div class="container">
+    <% if user_signed_in? %>
+<h1> <%= current_user.name %> </h1>
+<%end %>
 
 <div class="row-fluid postrow" >
 
 <% @posts.each_with_index do |post,index| %>
 
 <% if index%3 != 0 %>
-        <div class="span4 postbox" >
+        <div class="span4 postbox" >.
             <span class= "postext">
                 <h3 class ="posthead"> <%= post.title %></h3>
                
