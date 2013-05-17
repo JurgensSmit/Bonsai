@@ -10,6 +10,4 @@ class Post < ActiveRecord::Base
 
 acts_as_votable
 default_scope order: 'posts.created_at DESC'
-
-
 end
