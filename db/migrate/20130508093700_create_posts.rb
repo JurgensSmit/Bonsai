@@ -8,11 +8,7 @@ class CreatePosts < ActiveRecord::Migration
 
      t.references :user
 
-      t.timestamps
     end
-
-    add_index :posts, :user_id
-
 
       t.timestamps
     end
