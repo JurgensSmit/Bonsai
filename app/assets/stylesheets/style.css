@@ -6,4 +6,13 @@
 
 .home-who-can{width:850px;height:350px;padding:30px;margin:80px auto 30px auto;background:url(black40.png)}
 .home-who-can h2{color:white;text-align:center}.home-who-can h4{color:#FFCA00;font-size:25px}.home-who-can p{color:white}
-.home-who-can ul{margin-top:20px}.home-who-can li{float:left;width:30%;height:40%;margin:14px}
+.home-who-can ul{margin-top:20px}.home-who-can li{float:left;width:30%;height:40%;margin:14px;}
+
+body
+{
+background-color:#000;
+background: url(bg.jpg);
+background-repeat:no-repeat;
+background-position:center; 
+background-attachment:fixed;
+} 
