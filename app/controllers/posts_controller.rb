@@ -2,13 +2,13 @@ class PostsController < ApplicationController
     # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
-    @posts = Post.paginate(:page => params[:page], :per_page => 68)
+    @posts = Post.paginate(:page => params[:page])
     #BEFORE MY MERGE
     #@posts = @user.posts
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
+      format.js
     end
   end
 
@@ -85,10 +85,10 @@ class PostsController < ApplicationController
     redirect_to :back
     flash[:notice]="Liked!" 
   end
-
-  private
-    def get_user
-      @user = User.find(params[:user_id])
-    end
+def home
+  @posts = Post.where(:user_id => current_user.id).paginate(:page => params[:page])
+end
+  
+end
 
 end
