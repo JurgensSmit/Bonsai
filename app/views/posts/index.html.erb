@@ -1,9 +1,4 @@
 
-<body style="background-image: url(http://localhost:3000/bg.jpg)">
-
-    <%= link_to  user_posts_path(@user) do %>  <h1 class="btn btn-large btn-inverse">Posts for:<%= @user.name.capitalize%></h1><%end%>
-
-<br>
 <div class="container">
 
 <div class="row-fluid postrow" >
@@ -20,15 +15,16 @@
                 <%end %>
 
                 <h4> <small> </small></h4>
-         
+         <div class="container">
                 <h4> <%= post.content %></h4>
+            </div>
                <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
-            <%= link_to  like_user_post_path(post.user,post), :method => :post, :class=>"editlike pull-right" do %>
+            <%= link_to  like_post_path(post), :method => :post, :class=>"editlike pull-right" do %>
 
-            <%=post.likes.size %><i class="icon-heart"></i><%end %>
+            <%=post.likes.size %><i class="icon-heart heart"></i><%end %>
         
-          <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'editlike pull-left'%>
+          <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
         </div>
 <% else %>
@@ -37,25 +33,31 @@
     <div class="row-fluid postrow">
         <div class="span4 postbox" >
             <span class= "postext">
-             <h2> <%= post.title %><br></h2>
-             <h4> #<%= post.tag%></h4><br>
-            <h4> Post Content:</h4><%= post.content %><br>
-            <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-primary editlike '%>
+                <h3 class ="posthead"> <%= post.title %></h3>
+               
+                <% if post.tag? %>
+                <h4># <%= post.tag %></h4><br>
+                <%end %>
 
-            <%= link_to  like_user_post_path(post.user,post), :method => :post ,:class =>""  do%>
-            <span class="btn btn-primary editlike">
-            <%=post.likes.size %><i class="icon-heart "></i></span><%end %>
+                <h4> <small> </small></h4>
+         <div class="container">
+                <h4> <%= post.content %></h4>
+            </div>
+               <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
+            <%= link_to  like_post_path(post.user,post), :method => :post, :class=>"editlike pull-right" do %>
 
-        </span>
-    </div>
+            <%=post.likes.size %><i class="icon-heart heart"></i><%end %>
+        
+          <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
-
+        </div>
 <%end%>
 <% end %>
 
-</div><%= will_paginate(@post) %>
+</div>
 </div>
 
 
 </body>
+

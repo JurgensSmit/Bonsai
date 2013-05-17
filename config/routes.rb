@@ -15,12 +15,11 @@ Bonsai::Application.routes.draw do
 
       match 'contact' => 'contact#new', :as => 'contact', :via => :get
       match 'contact' => 'contact#create', :as => 'contact', :via => :post
-      resources :users do
+      
+      resources :users
       resources :posts do
       member do
       post :like
       end
-    resources :comments
-    end
   end
 end

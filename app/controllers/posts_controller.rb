@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
-  before_filter :get_user
-  # GET /posts
+    # GET /posts
   # GET /posts.json
   def index
-    @posts = @user.posts
+    @posts = Post.all
     @posts = Post.paginate(:page => params[:page], :per_page => 68)
     #BEFORE MY MERGE
     #@posts = @user.posts
@@ -16,7 +15,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = @user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @post }
@@ -26,7 +25,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @post = @user.posts.build
+    @post = Post.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @post }
@@ -35,14 +34,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
-    @post = @user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   # POST /posts
   # POST /posts.json
   def create
-    @post = @user.posts.build(params[:post])
-
+@post = Post.new(params[:post])
     respond_to do |format|
       if @post.save
       format.html { redirect_to user_posts_path(@user), notice: 'Post was successfully created.' }
@@ -57,7 +55,7 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    @post = @user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(params[:post])
         format.html { redirect_to user_posts_url(@user), notice: 'Post was successfully updated.' }
@@ -72,7 +70,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post = @user.posts.find(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy
      respond_to do |format|
 
