@@ -13,23 +13,22 @@
 <% if index%3 != 0 %>
         <div class="span4 postbox" >
             <span class= "postext">
-                <h2> <%= post.title %><br></h2>
+                <h3 class ="posthead"> <%= post.title %></h3>
+               
                 <% if post.tag? %>
                 <h4># <%= post.tag %></h4><br>
                 <%end %>
 
-                <h4> <small> <%= time_ago_in_words(post.created_at, include_hours = false) %> ago</small></h4>
+                <h4> <small> </small></h4>
          
-                <h4> <%= post.content %></h4><br>
-              
-                
+                <h4> <%= post.content %></h4>
+               <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
             <%= link_to  like_user_post_path(post.user,post), :method => :post, :class=>"editlike pull-right" do %>
-            <div class="">
-            <%=post.likes.size %><i class="icon-heart"></i></span><%end %>
-            </div>
 
-          <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'editlike pull-right'%>
+            <%=post.likes.size %><i class="icon-heart"></i><%end %>
+        
+          <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'editlike pull-left'%>
 
         </div>
 <% else %>
