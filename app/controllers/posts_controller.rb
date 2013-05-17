@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = @user.posts
-    @posts = Post.paginate(:page => params[:page], :per_page => 3)
+    @posts = Post.paginate(:page => params[:page], :per_page => 68)
     #BEFORE MY MERGE
     #@posts = @user.posts
     respond_to do |format|

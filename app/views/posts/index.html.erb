@@ -1,20 +1,62 @@
-<h1>Listing posts</h1>
+
+<body style="background-image: url(http://localhost:3000/bg.jpg)">
+
+    <%= link_to  user_posts_path(@user) do %>  <h1 class="btn btn-large btn-inverse">Posts for:<%= @user.name.capitalize%></h1><%end%>
+
 <br>
-<% @posts.each do |post| %>
+<div class="container">
 
-<h4> Post Title:</h4><%= post.title %><br>
-<h4> Post Tags:</h4><%= post.tag %><br>
-<h4> Post Content:</h4><%= post.content %><br>
-<h4> Post Author:</h4><%= post.user.name %><br><br>
+<div class="row-fluid postrow" >
 
-<%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-warning'%>
-<%= link_to "Back", user_posts_path(post.user) ,:class => 'btn btn-info'%>
-        <%= link_to 'Like', like_user_post_path(post.user,post), :method => :post, :class => 'btn' %>
-Likes: <%= post.likes.size %>
+<% @posts.each_with_index do |post,index| %>
+
+<% if index%3 != 0 %>
+        <div class="span4 postbox" >
+            <span class= "postext">
+                <h2> <%= post.title %><br></h2>
+                <% if post.tag? %>
+                <h4># <%= post.tag %></h4><br>
+                <%end %>
+
+                <h4> <small> <%= time_ago_in_words(post.created_at, include_hours = false) %> ago</small></h4>
+         
+                <h4> <%= post.content %></h4><br>
+              
+                
+
+            <%= link_to  like_user_post_path(post.user,post), :method => :post, :class=>"editlike pull-right" do %>
+            <div class="">
+            <%=post.likes.size %><i class="icon-heart"></i></span><%end %>
+            </div>
+
+          <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'editlike pull-right'%>
+
+        </div>
+<% else %>
+
+</div>
+    <div class="row-fluid postrow">
+        <div class="span4 postbox" >
+            <span class= "postext">
+             <h2> <%= post.title %><br></h2>
+             <h4> #<%= post.tag%></h4><br>
+            <h4> Post Content:</h4><%= post.content %><br>
+            <%= link_to 'Edit', edit_user_post_path(post.user, post), :class => 'btn btn-primary editlike '%>
+
+            <%= link_to  like_user_post_path(post.user,post), :method => :post ,:class =>""  do%>
+            <span class="btn btn-primary editlike">
+            <%=post.likes.size %><i class="icon-heart "></i></span><%end %>
+
+
+        </span>
+    </div>
+
+
+<%end%>
 <% end %>
 
-<br><br>
-<%= link_to 'New Post', new_user_post_path(@user) , :class=>'btn btn-success'%>
+</div><%= will_paginate(@post) %>
+</div>
 
-<%= will_paginate @posts %>
 
+</body>
