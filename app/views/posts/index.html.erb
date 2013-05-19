@@ -3,25 +3,7 @@
     <% if user_signed_in? %>
 <h1> <%= current_user.name %> </h1>
 <%end %>
-<script>
-  $(function() {
-    $('img[data-src]').live('inview', function(event, isVisible) {
-      if (!isVisible) { return; }
-      
-      var img = $(this);
-      
-      // Show a smooth animation
-      img.css('opacity', 0);
-      img.load(function() { img.animate({ opacity: 1 }, 500); });
-      
-      // Change src
-      img.attr('src', img.attr('data-src'));
-      
-      // Remove it from live event selector
-      img.removeAttr('data-src');
-    });
-  });
-</script>
+
 
 <div class="row-fluid postrow" >
 
@@ -76,11 +58,12 @@
         </div>
 <%end%>
 <% end %>
+<%= will_paginate @posts %>
 <%= link_to 'Load More Posts', posts_path(:page => @posts.next_page), :remote => true if @posts.next_page %>
 
 </div>
 </div>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
 </body>
 

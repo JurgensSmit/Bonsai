@@ -1,0 +1,9 @@
+$('.posts-wrapper').append('#{escape_javascript(render partial: "shared/posts", :locals => { :posts => @posts })}');
+$('a.load-more-posts').attr('href', '#{posts_path page: @posts.next_page}');
+ 
+- unless @posts.next_page
+  $('a.load-more-posts').remove();
+
+  $ ->
+  $('a.load-more-posts').on 'inview' ->
+    $.getScript $(this).attr('href')
