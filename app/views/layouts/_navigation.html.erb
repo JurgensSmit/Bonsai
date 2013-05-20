@@ -15,6 +15,10 @@
      <%else %>
           <a href="/users/sign_out" >Sign out </a>
 
+
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+
+
       <% end %>
     </h5>
 
