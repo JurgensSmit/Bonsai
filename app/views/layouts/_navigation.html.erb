@@ -2,7 +2,7 @@
 
 <%= link_to root_path do%>
 
-<h1  class="pull-left"  style="margin-top:20px;">
+<h1  class="pull-left"  style="margin-top:20px;margin-left:30px;">
   TooMuchFavor<small style="color:#ffca00"> &copy;</small></h1>
   <%end%>
 
@@ -10,7 +10,7 @@
 <% if user_signed_in? %>
        <h4 class ="pull-right" style="margin-top:10px;"> Signed in as: <%= link_to current_user.name.capitalize, user_path(current_user) %> ( <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> )</h4>
 <%else %>
-<h3 class="pull-right" > Guest <br><a href="/users/sign_in">(Sign up) </a></h3>
+<h3 class="pull-right" > <br><a href="/users/sign_in"></a></h3>
 <%end%>
 </span>
 
