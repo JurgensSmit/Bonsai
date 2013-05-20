@@ -7,7 +7,6 @@ class Post < ActiveRecord::Base
     #Carrierwave
    mount_uploader :image, ImageUploader
 
-acts_as_votable
 default_scope order: 'posts.created_at DESC'
 self.per_page = 6
 end

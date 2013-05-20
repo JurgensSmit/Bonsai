@@ -22,7 +22,7 @@
          <div class="container">
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+               <h4 class=><small>   <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
             <%= link_to  like_post_path(post), :method => :post, :class=>"editlike pull-right" do %>
 
@@ -47,23 +47,23 @@
          <div class="container">
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+               <h4 class=><small>   <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
-            <%= link_to  like_post_path(post.user,post), :method => :post, :class=>"editlike pull-right" do %>
+          
 
-            <%=post.likes.size %><i class="icon-heart heart"></i><%end %>
+            <%=post.likes.size %><i class="icon-heart heart"></i>
+     
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
         </div>
-<%end%>
-<% end %>
-<%= will_paginate @posts %>
-<%= link_to 'Load More Posts', posts_path(:page => @posts.next_page), :remote => true if @posts.next_page %>
+            <%end%>
+            <% end %>
+            <%= will_paginate @posts %>
+             
 
 </div>
 </div>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 
-</body>
+
 
