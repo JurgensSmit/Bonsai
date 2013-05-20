@@ -1,7 +1,7 @@
 
 
-
- 
+<br>
+ <div style="margin-right:60px;">
 
 <div class="row-fluid postrow">
 
@@ -13,13 +13,13 @@
                 <h3 class ="posthead"> <%= post.title %></h3>
                
                 <% if post.tag? %>
-                <h4># <%= post.tag %></h4><br>
+                <h5># <%= post.tag %></h5><br>
                 <%end %>
 
         
-                <h4> <%= post.content %></h4>
+                <h5> <%= post.content %></h5>
             </div>
-                 <h4 ><small> 
+                 <h4 ><small> By:
                   <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago
                 </small></h4>
 
@@ -40,13 +40,13 @@
            
                 
                 <% if post.tag? %>
-                <h4># <%= post.tag %></h4><br>
+                <h5># <%= post.tag %></h5><br>
                 <%end %>
 
                 
-                <h4> <%= post.content %></h4>
+                <h5> <%= post.content %></h5>
             </div>
-               <h4 ><small>   <%=link_to post.user.name.capitalize, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago
+               <h4 ><small>   By: <%=link_to post.user.name.capitalize, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago
              </small></h4>
 
           
@@ -59,11 +59,15 @@
         </div>
             <%end%>
             <% end %>
-            <%= will_paginate @posts %>
-             
+            
 
 </div>
 
 
+<div class="paggy">
+  <a
 
+  <%= will_paginate @posts , :page_links => false %>
+</div>
+</div>
 

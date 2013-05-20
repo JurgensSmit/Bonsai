@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   # GET /posts.json
       def index
         @posts = Post.paginate(:page => params[:page])
-        #BEFORE MY MERGE
         #@posts = @user.posts
         respond_to do |format|
           format.html # index.html.erb

@@ -1,6 +1,7 @@
 .postrow{
-    padding:10px;
+
     color:white;
+
 }
 .postbox{
     padding: 20px;
@@ -9,23 +10,19 @@
     -moz-border-radius-bottomright: 50px;
     border-radius: 10px;
     overflow: show;
--moz-box-shadow: 0 0 5px 5px grey;
--webkit-box-shadow: 0 0 5px 5px grey;
-box-shadow: 0 0 5px 5px grey;
-min-width: 300px;
-
+    -moz-box-shadow: 0 0 5px 5px grey;
+    -webkit-box-shadow: 0 0 5px 5px grey;
+    box-shadow: 0 0 5px 5px grey;
+        max-height: 350px;
+        overflow:auto;
+        min-width: 400px;
+        margin-bottom: 30px;
 }
+
 .postbox:hover{
 -moz-box-shadow: 0 0 5px 5px white;
 -webkit-box-shadow: 0 0 5px 5px white;
 box-shadow: 0 0 5px 5px white;
-    
-}
-.postext{
-    font-family:Arial;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    display:block;
 }
 
 .heart:hover{
@@ -34,5 +31,8 @@ box-shadow: 0 0 5px 5px white;
 }
 .posthead{
 color:yellow;
-
+}
+.paggy{
+    bottom: 0px;
+    left: 0px
 }

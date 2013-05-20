@@ -6,7 +6,7 @@
   TooMuchFavor </h1>
   <%end%>
 <% if user_signed_in? %>
-       <h4 class ="pull-right" style="margin-top:30px;"> Signed in as: <%= link_to current_user.name.capitalize, user_path(current_user) %> ( <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> )</h4>
+       <h4 class ="pull-right" style="margin-top:30px;margin-right:30px;"> Signed in as: <%= link_to current_user.name.capitalize, user_path(current_user) %> ( <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> )</h4>
 <%else %>
 <h3 class="pull-right" > <br><a href="/users/sign_in"></a></h3>
 <%end%>
