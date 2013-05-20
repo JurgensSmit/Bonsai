@@ -1,22 +1,17 @@
-</head>
-  <body class="home index">
-  <header class="site-header">
-  <div class="container">
-    <h2>
-      <%= link_to "Bonsai", root_path, :class => 'brand' %>
-  
-    <span class=" nav nav-pills pull-right">
-          <p style ="font-size:0.7em;">
-     
-  <% if !user_signed_in? %>
-     <a href="/users/sign_in">Sign up  </a>
-     <%else %>
 
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 
-      <% end %>
-      </p>
-  </span>
-  </h2>
-  </nav>
-</header>
+<%= link_to root_path do%>
+
+<h1  class="pull-left"  style="margin-top:20px;">
+  TooMuchFavor<small style="color:#ffca00"> &copy;</small></h1>
+  <%end%>
+
+
+<% if user_signed_in? %>
+       <h4 class ="pull-right" style="margin-top:10px;"> Signed in as: <%= link_to current_user.name.capitalize, user_path(current_user) %> ( <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> )</h4>
+<%else %>
+<h3 class="pull-right" > Guest <br><a href="/users/sign_in">(Sign up) </a></h3>
+<%end%>
+</span>
+
+

@@ -1,53 +1,53 @@
 
 <div class="container">
-    <% if user_signed_in? %>
-<h1> <%= current_user.name %> </h1>
 
-<%end %>
-<a href="#">View all </a>
+ 
 
 <div class="row-fluid postrow" >
 
 <% @posts.each_with_index do |post,index| %>
 
 <% if index%3 != 0 %>
-        <div class="span4 postbox" >.
-            <span class= "postext">
+        <div class="span4 postbox" >
+            <div class= "postext">
                 <h3 class ="posthead"> <%= post.title %></h3>
                
                 <% if post.tag? %>
                 <h4># <%= post.tag %></h4><br>
                 <%end %>
 
-                <h4> <small> </small></h4>
-         <div class="container">
+        
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small> <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+                 <h4 ><small> 
+                  <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago
+                </small></h4>
 
 
              <%= %><i class="icon-heart heart pull-right " style="margin-right:10px;"></i>
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
-        </div>
+       
+      </div>
 <% else %>
 
 </div>
     <div class="row-fluid postrow">
-        <div class="span4 postbox" >
-            <span class= "postext">
-                <h3 class ="posthead"> <%= post.title %></h3>
-               
+        <div class="span4 postbox">
+         <div class= "postext">
+          <h3 class ="posthead"> <%= post.title %></h3>
+           
+                
                 <% if post.tag? %>
                 <h4># <%= post.tag %></h4><br>
                 <%end %>
 
-                <h4> <small> </small></h4>
-         <div class="container">
+                
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small>   <%=link_to post.user.name.capitalize, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+               <h4 ><small>   <%=link_to post.user.name.capitalize, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago
+             </small></h4>
 
           
 
@@ -55,7 +55,7 @@
 
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
-
+        
         </div>
             <%end%>
             <% end %>
