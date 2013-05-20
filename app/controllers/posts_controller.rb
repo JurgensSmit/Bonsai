@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
     # GET /posts
   # GET /posts.json
       def index
@@ -84,12 +85,6 @@ class PostsController < ApplicationController
     end
   end
 
- def like
-    @post= Post.find(params[:id])
-    @post.liked_by current_user
-    redirect_to :back
-    flash[:notice]="Liked!" 
-  end
-  
+
 
 end
