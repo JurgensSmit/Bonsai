@@ -47,12 +47,12 @@
          <div class="container">
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small>   <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+               <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
           
 
-            <%=post.likes.size %><i class="icon-heart heart"></i>
-     
+            <%= %><i class="icon-heart heart"></i>
+
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
