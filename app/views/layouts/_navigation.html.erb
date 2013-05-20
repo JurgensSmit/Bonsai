@@ -1,21 +1,33 @@
-</head>
-  <body class="home index">
-  <header class="site-header">
-  <div class="container">
-    <h2>
-      <%= link_to "Bonsai", root_path, :class => 'brand' %>
-  
-    <span class=" nav nav-pills pull-right">
-          <p style ="font-size:0.7em;">
-     
+ <div class="site-header container ">
+
+<%= link_to root_path do%>
+<h1 style ="font-size:38.5px; display:inline; -webkit-margin-before: 0.67em;
+-webkit-margin-after: 0.67em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;" class="pull-left" >
+  TooMuchFavor</h1>
+  <%end%>
+
+
+  <h5 style ="" class="pull-right">
   <% if !user_signed_in? %>
-     <a href="/users/sign_in">Sign up  </a>
+     <a href="/users/sign_in">Sign up </a>
      <%else %>
-          <a href="/users/sign_out">Sign  out  </a>
+          <a href="/users/sign_out" >Sign out </a>
 
       <% end %>
-      </p>
-  </span>
-  </h2>
-  </nav>
-</header>
+    </h5>
+
+  <span class="pull-right" style="display:inline">
+      <% if !user_signed_in? %>
+      
+  <%else %>
+
+
+
+<%end %>
+       <h1 class ="pull-right"> <%= link_to current_user.name.capitalize, user_path(current_user) %> </h1>
+
+</span>
+
+</div>
