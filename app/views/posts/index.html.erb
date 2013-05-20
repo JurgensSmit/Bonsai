@@ -2,8 +2,9 @@
 <div class="container">
     <% if user_signed_in? %>
 <h1> <%= current_user.name %> </h1>
-<%end %>
 
+<%end %>
+<a href="#">View all </a>
 
 <div class="row-fluid postrow" >
 
@@ -22,11 +23,10 @@
          <div class="container">
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small>   <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+               <h4 class=><small> <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
-            <%= link_to  like_post_path(post), :method => :post, :class=>"editlike pull-right" do %>
 
-            <%=post.likes.size %><i class="icon-heart heart"></i><%end %>
+             <%= %><i class="icon-heart heart pull-right " style="margin-right:10px;"></i>
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
@@ -47,11 +47,11 @@
          <div class="container">
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 class=><small>   <%= post.user.name.capitalize %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
+               <h4 class=><small>   <%=link_to post.user.name.capitalize, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago</h4></small>
 
           
 
-            <%= %><i class="icon-heart heart"></i>
+            <%= %><i class="icon-heart heart pull-right" style="margin-right:10px;"></i>
 
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>

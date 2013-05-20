@@ -18,8 +18,6 @@ Bonsai::Application.routes.draw do
       
       resources :users
       resources :posts do
-      member do
-      post :like
-      end
+ 
   end
 end

@@ -4,14 +4,18 @@
   <div class="container">
     <h2>
       <%= link_to "Bonsai", root_path, :class => 'brand' %>
-    </h2>
-    <ul id="user-nav" class="unstyled nav nav-pills pull-right">
-          
-      <li><a href="#">View all</a></li></a>
-      <li><a href="/about">About</a></li></a>
-      <li><a href="/users/sign_in">Sign up</a></li>
-      
-    </ul>
-  </div>
+  
+    <span class=" nav nav-pills pull-right">
+          <p style ="font-size:0.7em;">
+     
+  <% if !user_signed_in? %>
+     <a href="/users/sign_in">Sign up  </a>
+     <%else %>
+          <a href="/users/sign_out">Sign  out  </a>
+
+      <% end %>
+      </p>
+  </span>
+  </h2>
   </nav>
 </header>
