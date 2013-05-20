@@ -40,16 +40,22 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(params[:post])
-      respond_to do |format|
-        if @post.save
-          format.html { redirect_to user_posts_path(@user), notice: 'Post was successfully created.' }
-            format.json { render json: @post, status: :created, location: @post }
-        else
-            format.html { render action: "new" }
-            format.json { render json: @post.errors, status: :unprocessable_entity }
-        end
-    end
+        if user_signed_in?
+        @post = Post.new(params[:post])
+        @post.user_id = current_user.id
+          respond_to do |format|
+              if @post.save
+                format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
+                  format.json { render json: @post, status: :created, location: @post }
+              else
+                  format.html { render action: "new" }
+                  format.json { render json: @post.errors, status: :unprocessable_entity }
+              end
+              end
+         else
+         redirect_to :back
+         flash[:notice]="Please sign in first"  
+         end  
   end
 
   # PUT /posts/1
@@ -58,7 +64,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
       respond_to do |format|
         if @post.update_attributes(params[:post])
-          format.html { redirect_to user_posts_url(@user), notice: 'Post was successfully updated.' }
+          format.html { redirect_to posts_url(@post), notice: 'Post was successfully updated.' }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }

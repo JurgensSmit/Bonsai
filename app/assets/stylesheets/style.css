@@ -15,4 +15,6 @@ background: url(bg.jpg);
 background-repeat:no-repeat;
 background-position:center; 
 background-attachment:fixed;
+color:white;
+font-family:Helvetica;
 } 
