@@ -1,23 +1,17 @@
  <div class="site-header container ">
 
 <%= link_to root_path do%>
-<h1 style ="font-size:38.5px; display:inline; -webkit-margin-before: 0.67em;
--webkit-margin-after: 0.67em;
--webkit-margin-start: 0px;
--webkit-margin-end: 0px;" class="pull-left" >
-  TooMuchFavor</h1>
+
+<h1  class="pull-left"  style="margin-top:20px;">
+  TooMuchFavor<small style="color:#ffca00"> &copy;</small></h1>
   <%end%>
 
 
-  <h5 style ="" class="pull-right">
+
+  <h5 style ="margin-top:50px;" class="pull-right">
   <% if !user_signed_in? %>
      <a href="/users/sign_in">Sign up </a>
      <%else %>
-          <a href="/users/sign_out" >Sign out </a>
-
-
-          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-
 
       <% end %>
     </h5>
@@ -30,8 +24,11 @@
 
 
 <%end %>
-       <h1 class ="pull-right"> <%= link_to current_user.name.capitalize, user_path(current_user) %> </h1>
-
+<% if user_signed_in? %>
+       <h4 class ="pull-right" style="margin-top:10px;"> Signed in as: <%= link_to current_user.name.capitalize, user_path(current_user) %> ( <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> )</h4>
+<%else %>
+<h3 class="pull-right" > Guest </h3>
+<%end%>
 </span>
 
 </div>

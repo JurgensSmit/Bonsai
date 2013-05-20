@@ -8,7 +8,7 @@
 <% @posts.each_with_index do |post,index| %>
 
 <% if index%3 != 0 %>
-        <div class="span4 postbox" >.
+        <div class="span4 postbox" >
             <div class= "postext">
                 <h3 class ="posthead"> <%= post.title %></h3>
                
@@ -16,33 +16,34 @@
                 <h4># <%= post.tag %></h4><br>
                 <%end %>
 
-         <div class="container">
+        
                 <h4> <%= post.content %></h4>
             </div>
-               <h4 ><small> <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago</small></h4>
+                 <h4 ><small> 
+                  <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago
+                </small></h4>
 
 
              <%= %><i class="icon-heart heart pull-right " style="margin-right:10px;"></i>
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
-        </div>
+       
       </div>
 <% else %>
 
 </div>
     <div class="row-fluid postrow">
-        <div class="span4 postbox" >
+        <div class="span4 postbox">
+         <div class= "postext">
           <h3 class ="posthead"> <%= post.title %></h3>
-            <div class= "postext">
+           
                 
-               
                 <% if post.tag? %>
                 <h4># <%= post.tag %></h4><br>
                 <%end %>
 
                 
-         <div class="container">
                 <h4> <%= post.content %></h4>
             </div>
                <h4 ><small>   <%=link_to post.user.name.capitalize, user_path(post.user) %> <%= time_ago_in_words(post.created_at) %> ago
@@ -54,7 +55,7 @@
 
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
-          </div>
+        
         </div>
             <%end%>
             <% end %>
