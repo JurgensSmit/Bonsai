@@ -47,5 +47,7 @@ class User < ActiveRecord::Base
 has_many :posts
 acts_as_voter
 
+extend FriendlyId
+friendly_id :name, use: :slugged
 
 end

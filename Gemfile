@@ -43,3 +43,4 @@ gem 'carrierwave'
 gem 'acts_as_votable', '~> 0.5.0'
 gem 'will_paginate', '~> 3.0'
 gem 'carrierwave'
+gem "friendly_id", "~> 4.0.9"
