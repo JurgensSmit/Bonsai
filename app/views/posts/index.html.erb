@@ -23,8 +23,7 @@
                   <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago
                 </small></h4>
 
-
-             <%= %><i class="icon-heart heart pull-right " style="margin-right:10px;"></i>
+             <%= %><i class="icon-heart heart pull-right icon-2x" style="margin-right:10px;"></i>
         
           <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
 
