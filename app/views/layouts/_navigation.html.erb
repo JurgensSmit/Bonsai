@@ -1,18 +1,23 @@
-
-
 <%= link_to root_path do%>
-
-<h1  class="pull-left"  style="margin-top:20px;margin-left:30px; "><%= image_tag("logo.jpg", :style => "width:30px;height:30px; margin-bottom:10px;")%>
-  TooMuchFavor </h1>
-  <%end%>
-<% if user_signed_in? %>
-       <h4 class ="pull-right" style="margin-top:30px;margin-right:30px;"> Signed in as: <%= link_to current_user.name.capitalize, user_path(current_user) %> ( <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> )</h4>
-<%else %>
-<h4 class ="pull-right" style="margin-top:20px;margin-right:30px;"> 
-      <%= link_to 'Login', new_user_session_path %> |
-          <%= link_to 'Sign up', new_user_registration_path %>
-          </h3>
+	<h1  class="pull-left"  style="margin-top:20px;margin-left:30px; "><%= image_tag("logo.jpg", :style => "width:30px;height:30px; margin-bottom:10px;")%>
+	TooMuchFavor </h1>
 <%end%>
+<div class="header">
+		<% if user_signed_in? %>
 
-
-
+			<div class ="pull-right" style="margin-top:20px;margin-right:20px;"> 
+				<h4> | <%= link_to current_user.name.capitalize, user_path(current_user) %></h4> 
+			</div>
+			<%else %>
+			<h4 class ="pull-right" style="margin-top:28px;margin-right:20px"> 
+			<%= link_to 'Login', new_user_session_path %> |
+			<%= link_to 'Sign up', new_user_registration_path %>
+			</h3>
+		<%end%>
+	<ul id="user-nav" class="unstyled nav nav-pills pull-right" style="margin-top:23px;margin-right:10px">
+		<li>
+		<li><a href="/posts">All posts</a></li></a>
+		<li><a href="/posts/new">New post</a></li></a>
+		</li>
+	</ul>
+</div>
