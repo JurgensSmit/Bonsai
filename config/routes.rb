@@ -5,7 +5,7 @@ Bonsai::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
     authenticated :user do
-    root :to => 'home#index'
+    root :to => 'posts#index'
     end
         get "privacy_policy/index", :id => "privacy_policy"
         match "privacy_policy" => "privacy_policy#index"
