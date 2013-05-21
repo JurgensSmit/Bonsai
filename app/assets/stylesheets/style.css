@@ -15,7 +15,8 @@ max-width: 2000px;
 }
 body
 {
-background: url(bg.jpg);
+background: url(bg1.jpg);
+background-size: cover;
 color:white;
 max-height: 85%;
 }
