@@ -42,4 +42,5 @@ gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'will_paginate', '~> 3.0'
 gem 'carrierwave'
+gem 'thumbs_up'
 gem "friendly_id", "~> 4.0.9"

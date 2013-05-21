@@ -1,6 +1,7 @@
 
 body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 font-size:14px;color:#333;margin:0px;
+max-width: 2000px;
 }
 *{
     word-wrap:break-word;
@@ -9,7 +10,7 @@ font-size:14px;color:#333;margin:0px;
     color:#ffca00;
 }
 * a:hover{
-    color:#ffca00;
+    color:yellow;
     text-decoration: none;
 }
 body
@@ -23,7 +24,7 @@ header{
     opacity: 0.8;
     height: 80px;
       min-width: 100%;
-    max-width: 100%;
+    max-width: 1850px;
 }
 header a{
  color:#ffca00;
@@ -44,3 +45,4 @@ footer a{
     width: 70px;
     padding-top: 20px;
 }
+

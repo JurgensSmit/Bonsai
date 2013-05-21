@@ -1,7 +1,5 @@
-
-
 <br>
- <div style="margin-right:60px;">
+
 
 <div class="row-fluid postrow">
 
@@ -10,10 +8,16 @@
 <% if index%3 != 0 %>
         <div class="span4 postbox" >
             <div class= "postext">
-                <h3 class ="posthead"> <%= post.title %></h3>
-               
+                <h3 class ="posthead"> <%= link_to post.title, post_path(post) %>
+
+                    <%if user_signed_in? %>
+        <% if current_user == post.user %>
+          <%= link_to  edit_post_path(post), :class => 'editlike pull-right icon-pencil' ,:style=>"font-size:18px;" do%>
+          
+        <%end end end%></h3>
+
                 <% if post.tag? %>
-                <h5># <%= post.tag %></h5><br>
+                <h5># <%= post.tag %></h5>
                 <%end %>
 
         
@@ -23,11 +27,15 @@
                   <%=link_to post.user.name.capitalize, user_path(post.user) %>   <%= time_ago_in_words(post.created_at) %> ago
                 </small></h4>
 
-             <%= %><i class="icon-heart heart pull-right icon-2x" style="margin-right:10px;"></i>
-        
-          <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
+             <%= link_to  likeunlike_post_path(post), :method => :put  do%>
+<i class="icon-heart heart pull-right icon-2x" > <span style="font-size:13px;"><%= post.votes_for %></span></i>
 
-       
+<%end%>
+        
+         
+          <br>
+                    
+
       </div>
 <% else %>
 
@@ -35,11 +43,17 @@
     <div class="row-fluid postrow">
         <div class="span4 postbox">
          <div class= "postext">
-          <h3 class ="posthead"> <%= post.title %></h3>
+          <h3 class ="posthead"> <%= link_to post.title, post_path(post) %>   
+            <%if user_signed_in? %>
+        <% if current_user == post.user %>
+          <%= link_to  edit_post_path(post), :class => 'editlike pull-right icon-pencil' ,:style=>"font-size:18px;" do%>
+          
+        <%end end end%></h3>
+
            
                 
                 <% if post.tag? %>
-                <h5># <%= post.tag %></h5><br>
+                <h5># <%= post.tag %></h5>
                 <%end %>
 
                 
@@ -50,11 +64,11 @@
 
           
 
-            <%= %><i class="icon-heart heart pull-right" style="margin-right:10px;"></i>
+                   <%= link_to  likeunlike_post_path(post), :method => :put  do%>
+<i class="icon-heart heart pull-right icon-2x" > <span style="font-size:13px;"><%= post.votes_for %></span></i>
+<%end%>
 
-        
-          <%= link_to 'Edit', edit_post_path(post), :class => 'editlike pull-left'%>
-        
+     
         </div>
             <%end%>
             <% end %>
@@ -64,9 +78,10 @@
 
 
 <div class="paggy">
-  <a
+
 
   <%= will_paginate @posts , :page_links => false %>
+
 </div>
-</div>
+
 

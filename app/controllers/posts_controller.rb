@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-
+before_filter :get_post, :except => [:index, :new, :create]
     # GET /posts
   # GET /posts.json
       def index
-        @posts = Post.paginate(:page => params[:page])
+         @posts = Post.scoped.paginate(page: params[:page], per_page: params[:per_page] || 6)
         #@posts = @user.posts
         respond_to do |format|
           format.html # index.html.erb
@@ -15,7 +15,6 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
     def show
-      @post = Post.find(params[:id])
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @post }
@@ -61,7 +60,6 @@ class PostsController < ApplicationController
   # PUT /posts/1
   # PUT /posts/1.json
   def update
-    @post = Post.find(params[:id])
       respond_to do |format|
         if @post.update_attributes(params[:post])
           format.html { redirect_to post_path(@post), notice: 'Post was successfully updated.' }
@@ -76,7 +74,6 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
      respond_to do |format|
       format.html { redirect_to posts_url }
@@ -84,6 +81,22 @@ class PostsController < ApplicationController
     end
   end
 
+  def likeunlike
+      if user_signed_in? 
+        if !@post.voted_by?(current_user)
+          current_user.vote_for(@post)
+          redirect_to :back
+        else
+          current_user.unvote_for(@post)
+          redirect_to :back
+        end
+      else
+        redirect_to new_user_registration_path
+    end
+  end
 
+  def get_post
+    @post = Post.find(params[:id])
+  end
 
 end
