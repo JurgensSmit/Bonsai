@@ -19,6 +19,26 @@
 -webkit-box-shadow: 0 0 5px 5px white;
 box-shadow: 0 0 5px 5px white;
 }
+.postbox1{
+    padding: 20px;
+    opacity:0.6;
+    background-color:black;
+    -moz-border-radius-bottomright: 50px;
+    border-radius: 10px;
+    overflow: show;
+    -moz-box-shadow: 0 0 5px 5px grey;
+    -webkit-box-shadow: 0 0 5px 5px grey;
+    box-shadow: 0 0 5px 5px grey;
+        max-height: 35%;
+        overflow:auto;
+        margin-bottom: 30px;
+}
+
+.postbox1:hover{
+-moz-box-shadow: 0 0 5px 5px white;
+-webkit-box-shadow: 0 0 5px 5px white;
+box-shadow: 0 0 5px 5px white;
+}
 
 .heart:hover{
     color:red;

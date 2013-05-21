@@ -99,4 +99,5 @@ before_filter :get_post, :except => [:index, :new, :create]
     @post = Post.find(params[:id])
   end
 
+
 end
