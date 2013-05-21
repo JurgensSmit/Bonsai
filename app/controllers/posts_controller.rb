@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 before_filter :get_post, :except => [:index, :new, :create]
+before_filter :check_for_mobile, :only => [:index]
+
     # GET /posts
   # GET /posts.json
       def index
